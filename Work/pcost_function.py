@@ -7,10 +7,13 @@ def portofilo_cost(filename):
   with open(filename, 'rt') as f:
     next(f)
     for line in f:
-      info = line.split(',')
-      amount = int(info[1])
-      price = float(info[2])
-      cost = cost + amount * price
+      try:
+        info = line.split(',')
+        amount = int(info[1])
+        price = float(info[2])
+        cost = cost + amount * price
+      except ValueError:
+        print('Could not parse:', line)
 
   return cost
 
