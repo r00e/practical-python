@@ -45,3 +45,14 @@ def make_report(portfolio, prices):
       report.append((stock['name'], int(stock['shares']), curPrice, curPrice - originalPrice))
 
   return report
+
+def print_report(report):
+  headers = ('Name', 'Shares', 'Price', 'Change')
+  print(f'{headers[0]:>10s} {headers[1]:>10s} {headers[2]:>10s} {headers[3]:>10s}')
+  separator = '-' * 10
+  print(f'{separator} {separator} {separator} {separator}')
+  for row in report:
+    name, shares, price, change = row
+    priceWithFormat = f'{price:.2f}'
+    priceWithCurrency = '$' + priceWithFormat
+    print(f'{name:>10s} {shares:>10d} {priceWithCurrency:>10s} {change:>10.2f}')
